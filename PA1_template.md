@@ -1,10 +1,5 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-author: "Shavak Sinanan"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
+Shavak Sinanan  
 
 ## Introduction
 
@@ -39,7 +34,8 @@ The dataset is stored in a comma-separated-value (CSV) file and there are a tota
 
 The file *activity.csv* should exist in the working directory.
 
-```{r}
+
+```r
 activity <- read.csv("activity.csv", colClasses = c("integer", "Date", "integer")) # date is in YYYY-MM-DD format
 ```
 
