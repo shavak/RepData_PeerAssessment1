@@ -86,7 +86,28 @@ The median total number of steps is 10395.
 
 ## What is the average daily activity pattern?
 
+Below is a code chunk producing a plot of the average number of steps over all of the days for each interval; the plot follows.
 
+
+```r
+activity_by_interval <- summarise(group_by(activity, interval), avg_steps = mean(steps, na.rm = TRUE))
+qplot(interval,
+      avg_steps,
+      data = activity_by_interval,
+      geom = "line",
+      main = "Average Daily Activity",
+      xlab = "Interval",
+      ylab = "Average number of steps",
+      col = I("red"))
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
+
+```r
+# I'd really have liked the x axis to be prettier; will work on this more if I have some time
+```
+
+On average over all of the days, the interval 835 contains the maximum number of steps.
 
 ## Imputing missing values
 
