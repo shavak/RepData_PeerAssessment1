@@ -5,6 +5,7 @@
 
 library(dplyr)
 library(ggplot2)
+library(chron)
 library(data.table)
 
 activity <- read.csv("activity.csv", colClasses = c("integer", "Date", "integer")) # date is in YYYY-MM-DD format
@@ -55,3 +56,18 @@ impute_steps <- function(daily_activity, step_profile = rep(0, 288)) {
 # do it all in one line - no farting around
 patched_activity <- rbindlist(lapply(split(activity, activity$date), impute_steps, step_profile = activity_by_interval$avg_steps)) # replace missing values with average for the appropriate interval
 
+day_type <- factor(is.weekend(patched_activity$date), levels = c(TRUE, FALSE), labels = c("weekend", "weekday"))
+
+patched_activity <- data.table(cbind(patched_activity, day_type))
+
+patched_activity_by_iw <- patched_activity[, mean(steps), by = c("interval", "day_type")]
+
+qplot(interval,
+      V1,
+      data = patched_activity_by_iw,
+      facets = day_type ~ .,
+      geom = "line",
+      main = "Average Daily Activity",
+      xlab = "Interval",
+      ylab = "Average number of steps",
+      col = I("purple"))

@@ -31,7 +31,7 @@ The dataset is stored in a comma-separated-value (CSV) file and there are a tota
 
 ## Required packages
 
-The following packages are used in the analysis: *dplyr*, *ggplot2*, *data.table*.
+The following packages are used in the analysis: *dplyr*, *ggplot2*, *chron*, *data.table*.
 
 
 
@@ -210,3 +210,25 @@ The median total number of steps is 10766.19.
 Both the mean and median have **increased** after imputing missing values.
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+Below is a code chunk producing a plot of the average number of steps over all of the days for each interval, split by weekday/weekend; the plot follows.
+
+
+```r
+day_type <- factor(is.weekend(patched_activity$date), levels = c(TRUE, FALSE), labels = c("weekend", "weekday"))
+patched_activity <- data.table(cbind(patched_activity, day_type))
+patched_activity_by_iw <- patched_activity[, mean(steps), by = c("interval", "day_type")]
+qplot(interval,
+      V1,
+      data = patched_activity_by_iw,
+      facets = day_type ~ .,
+      geom = "line",
+      main = "Average Daily Activity",
+      xlab = "Interval",
+      ylab = "Average number of steps",
+      col = I("purple"))
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-15-1.png) 
+
+The activity level appears to be **more widely spread** over the weekends.
