@@ -12,14 +12,12 @@ activity <- read.csv("activity.csv", colClasses = c("integer", "Date", "integer"
 
 activity_by_day <- summarise(group_by(activity, date), total_steps = sum(steps, na.rm = TRUE))
 
-qplot(date,
+qplot(total_steps,
       data = activity_by_day,
       geom = "histogram",
-      weight = total_steps,
-      binwidth = 1,
       main = "Total Number of Steps Per Day",
-      xlab = "Date",
-      ylab = "Total number of steps",
+      xlab = "Total number of steps",
+      ylab = "Frequency",
       fill = I("orange"),
       alpha = I(0.75))
 

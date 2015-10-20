@@ -57,16 +57,18 @@ Below is a code chunk producing a histogram of the total number of steps per day
 
 
 ```r
-qplot(date,
+qplot(total_steps,
       data = activity_by_day,
       geom = "histogram",
-      weight = total_steps,
-      binwidth = 1,
       main = "Total Number of Steps Per Day",
-      xlab = "Date",
-      ylab = "Total number of steps",
+      xlab = "Total number of steps",
+      ylab = "Frequency",
       fill = I("orange"),
       alpha = I(0.75))
+```
+
+```
+## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
@@ -181,16 +183,18 @@ Below is a code chunk producing a histogram of the total number of steps per day
 
 
 ```r
-qplot(date,
+qplot(total_steps,
       data = patched_activity_by_day,
       geom = "histogram",
-      weight = total_steps,
-      binwidth = 1,
       main = "Total Number of Steps Per Day",
-      xlab = "Date",
-      ylab = "Total number of steps",
+      xlab = "Total number of steps",
+      ylab = "Frequency",
       fill = I("green"),
       alpha = I(0.75))
+```
+
+```
+## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-13-1.png) 
