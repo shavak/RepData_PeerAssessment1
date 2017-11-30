@@ -1,5 +1,10 @@
-# Reproducible Research: Peer Assessment 1
-Shavak Sinanan  
+---
+title: "Reproducible Research: Peer Assessment 1"
+author: "Shavak Sinanan"
+output: 
+  html_document:
+    keep_md: true
+---
 
 ## Introduction
 
@@ -44,6 +49,11 @@ The file *activity.csv* should exist in the working directory.
 activity <- read.csv("activity.csv", colClasses = c("integer", "Date", "integer")) # date is in YYYY-MM-DD format
 ```
 
+```
+## Warning in strptime(xx, f <- "%Y-%m-%d", tz = "GMT"): unknown timezone
+## 'zone/tz/2017c.1.0/zoneinfo/Europe/London'
+```
+
 ## What is mean total number of steps taken per day?
 
 The total number of steps taken per day is computed as follows:
@@ -68,10 +78,10 @@ qplot(total_steps,
 ```
 
 ```
-## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 The mean and median of the total number of steps per day is computed as follows:
 
@@ -102,7 +112,7 @@ qplot(interval,
       col = I("red"))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 ```r
 # I'd really have liked the x axis to be prettier; will work on this more if I have some time
@@ -194,10 +204,10 @@ qplot(total_steps,
 ```
 
 ```
-## stat_bin: binwidth defaulted to range/30. Use 'binwidth = x' to adjust this.
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-13-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 
 The mean and median of the total number of steps per day is computed as follows:
 
@@ -233,6 +243,6 @@ qplot(interval,
       col = I("purple"))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-15-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
 
 The activity level appears to be **more widely spread** over the weekends.
